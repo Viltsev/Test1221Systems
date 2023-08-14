@@ -78,11 +78,7 @@ struct GetProductInfoButton: View {
                             .font(.headline)
                             .multilineTextAlignment(.leading)
                         if (prevPrice != nil) {
-                            Text(String(format: "%.2f", prevPrice!))
-                                .foregroundColor(.gray)
-                                .font(.headline)
-                                .multilineTextAlignment(.leading)
-                                .strikethrough()
+                            StrikethroughText(text: String(format: "%.2f", prevPrice!))
                         }
                     }
                     Image("priceImage")
@@ -114,5 +110,22 @@ struct BuyProductButton: View {
                     .foregroundColor(.white)
             }
         }.frame(width: 130, height: 170, alignment: .bottomTrailing)
+    }
+}
+
+struct StrikethroughText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.headline)
+            .multilineTextAlignment(.leading)
+            .foregroundColor(.gray)
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .padding(.vertical, 5)
+                    .foregroundColor(.gray)
+            )
     }
 }

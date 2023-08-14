@@ -16,17 +16,17 @@ struct MainScreenView: View {
                 // MARK: Stories
                 ScrollView(.horizontal) {
                     StoriesView()
-                }.scrollIndicators(.hidden)
+                }
                 // MARK: First Info
                 ScrollView(.horizontal) {
                     FirstInfoBlockView()
-                }.scrollIndicators(.hidden)
+                }
                 // MARK: Bonuses
                 BonusView()
                 // MARK: Benefits
                 ScrollView(.horizontal) {
                     BenefitsView()
-                }.scrollIndicators(.hidden)
+                }
                 // MARK: Recommendations
                 ProductsTitleView(title: "Рекомендуем")
                 ScrollView(.horizontal) {
@@ -38,7 +38,11 @@ struct MainScreenView: View {
                     ProductsView(products: sweetMood)
                 }
                 
-            }.scrollIndicators(.hidden)
+            }
+            .onAppear {
+                UIScrollView.appearance().showsHorizontalScrollIndicator = false
+                UIScrollView.appearance().showsVerticalScrollIndicator = false
+            }
         }
         .tabItem {
             Image(systemName: "tree.circle")
